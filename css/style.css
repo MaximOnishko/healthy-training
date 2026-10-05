@@ -130,7 +130,7 @@ hr.sep { border: 0; border-top: 1px dashed var(--line); margin: 18px 0; }
 
 /* wizard */
 .wizard { max-width: 400px; margin-inline: auto; scroll-margin-top: 80px; }
-.steps { min-height: 330px; }
+.steps { min-height: 0; }
 .step { display: none; }
 .step.active { display: block; animation: fade .3s; }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -151,7 +151,8 @@ input::placeholder { color: #5a6c80; }
 .progress div { height: 100%; background: var(--green); width: 0; transition: width .3s; }
 .row { display: flex; gap: 10px; margin-top: 18px; justify-content: space-between; }
 .notice { background: rgba(255, 178, 36, .1); border: 1px solid rgba(255, 178, 36, .3); border-radius: 10px; padding: 10px 14px; font-size: .88rem; color: var(--amber); }
-.error-slot { min-height: 46px; margin-top: 12px; }
+.error-slot:empty, .error-slot { margin-top: 0; }
+.error-slot .notice { margin: 12px 0 0; }
 
 /* stats */
 .stat { text-align: center; }
