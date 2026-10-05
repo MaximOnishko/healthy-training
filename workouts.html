@@ -5,18 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Тренировки — Фитик</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
   <main class="container section">
-    <h1>Тренировки 🏋️</h1>
-    <p class="lead">Выбери план по уровню и времени. Перед стартом — разминка 5 минут.</p>
+    <span class="tag">Программы · упражнения · калории</span>
+    <h1>Тренировки <em>для любого уровня</em></h1>
+    <p class="lead">Выбери место и уровень. Перед стартом — разминка 5 минут, после — растяжка. Интервалы удобно считать на <a href="timer.html">таймере</a>.</p>
+
+    <div class="chips" id="filters"></div>
     <div class="grid cols-3" id="list"></div>
+
+    <section style="margin-top:56px">
+      <h2>Библиотека <em>упражнений</em></h2>
+      <p class="lead">Короткая техника — чтобы тренироваться эффективно и безопасно.</p>
+      <div class="grid cols-3" id="library"></div>
+    </section>
+
+    <section style="margin-top:56px">
+      <h2>Калькулятор <em>расхода калорий</em></h2>
+      <div class="card" style="max-width:640px">
+        <div class="grid cols-3">
+          <div><label for="cAct">Активность</label><select id="cAct"></select></div>
+          <div><label for="cMin">Минут</label><input type="number" id="cMin" min="5" max="300" value="30"></div>
+          <div><label for="cW">Ваш вес, кг</label><input type="number" id="cW" min="30" max="250" value="70"></div>
+        </div>
+        <p style="margin:18px 0 0">Вы сожжёте примерно <b style="font-family:var(--head);font-size:2.2rem;color:var(--green)" id="cRes">0</b> ккал</p>
+      </div>
+    </section>
   </main>
   <div id="site-footer"></div>
   <script src="js/data.js"></script>
+  <script src="js/sport.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/layout.js"></script>

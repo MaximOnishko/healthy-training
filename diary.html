@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Мой дневник — Фитик</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
         <div class="bar" id="kcalBar"><div style="width:0"></div></div>
         <p><b id="eatenTxt">0</b> из <b id="targetTxt">0</b> ккал</p>
         <div class="macro"><span>🥩 Белки: <b id="mP"></b> г</span><span>🥑 Жиры: <b id="mF"></b> г</span><span>🍞 Углеводы: <b id="mC"></b> г</span></div>
-        <hr style="border:0;border-top:1px dashed #dbeadf;margin:18px 0">
+        <hr class="sep">
         <label for="extra">Добавить ещё калорий (перекус, сладкое…)</label>
         <div style="display:flex;gap:8px">
           <input type="number" id="extra" min="0" placeholder="Например, 150">
@@ -50,7 +50,7 @@
       <div class="card">
         <h2>Вода 💧</h2>
         <div class="glasses" id="glasses"></div>
-        <hr style="border:0;border-top:1px dashed #dbeadf;margin:18px 0">
+        <hr class="sep">
         <h2>Вес сегодня ⚖️</h2>
         <div style="display:flex;gap:8px">
           <input type="number" id="weightToday" step="0.1" placeholder="кг">
@@ -68,6 +68,23 @@
     </div>
 
     <div class="card" style="margin-top:20px">
+      <h2>Мой план <em>на неделю</em> 🏋️</h2>
+      <div class="week" id="week"></div>
+      <p class="lead" style="margin-bottom:0">План подобран под твою цель. Таймер для интервалов — <a href="timer.html">здесь</a>, программы — <a href="workouts.html">здесь</a>.</p>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h2>Тренировка <em>сегодня</em></h2>
+      <div class="grid cols-3">
+        <div><label for="wAct">Активность</label><select id="wAct"></select></div>
+        <div><label for="wMin">Минут</label><input type="number" id="wMin" min="5" max="300" value="30"></div>
+        <div style="display:flex;align-items:flex-end"><button class="btn" id="addWorkout" style="width:100%">Записать</button></div>
+      </div>
+      <div id="workoutList" style="margin-top:14px"></div>
+      <p style="margin:12px 0 0">Сожжено сегодня: <b style="font-family:var(--head);font-size:1.8rem;color:var(--amber)" id="burned">0</b> ккал</p>
+    </div>
+
+    <div class="card" style="margin-top:20px">
       <h2>Динамика веса 📈</h2>
       <svg id="chart" viewBox="0 0 600 180" preserveAspectRatio="none"></svg>
       <p id="chartNote" class="lead"></p>
@@ -82,6 +99,7 @@
   <div id="site-footer"></div>
 
   <script src="js/data.js"></script>
+  <script src="js/sport.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/calc.js"></script>
   <script src="js/audio.js"></script>

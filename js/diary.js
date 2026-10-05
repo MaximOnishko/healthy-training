@@ -67,9 +67,33 @@
       Store.setDay(d); Sound.happy(); render();
     }));
 
+    renderWorkouts(day);
     mood(day, total);
     chart();
   }
+
+  // --- спорт: недельный план и запись тренировок ---
+  const todayIdx = (new Date().getDay() + 6) % 7; // Пн = 0
+  $('week').innerHTML = SPORT.week[profile.goal].map(([e, t, d], i) => `
+    <div class="day ${i === todayIdx ? 'today' : ''} ${t.includes('Отдых') ? 'rest' : ''}">
+      <b>${SPORT.days[i]}</b><span class="e">${e}</span><div><b style="font-size:.85rem;color:var(--ink);font-family:inherit;text-transform:none">${t}</b>${d ? '<br>' + d : ''}</div>
+    </div>`).join('');
+  $('wAct').innerHTML = SPORT.activities.map((a) => `<option value="${a.id}">${a.emoji} ${a.name}</option>`).join('');
+
+  function renderWorkouts(day) {
+    const list = day.workouts || [];
+    $('workoutList').innerHTML = list.map((w) => `<div class="exercise"><span>${w.name} · ${w.min} мин</span><span>${w.kcal} ккал</span></div>`).join('');
+    $('burned').textContent = list.reduce((s, w) => s + w.kcal, 0);
+  }
+
+  $('addWorkout').addEventListener('click', () => {
+    const a = SPORT.activities.find((x) => x.id === $('wAct').value);
+    const min = parseInt($('wMin').value, 10);
+    if (!(min > 0)) { toast('Укажи длительность'); return; }
+    const kcal = Math.round(a.met * profile.weight * (min / 60));
+    const d = Store.getDay(); d.workouts = [...(d.workouts || []), { name: a.name, min, kcal }]; Store.setDay(d);
+    Sound.win(); toast(`Записано: −${kcal} ккал 🔥`); render();
+  });
 
   function mood(day, total) {
     const hour = new Date().getHours();
@@ -96,8 +120,8 @@
     const x = (i) => 20 + (i / (pts.length - 1)) * 560;
     const y = (w) => 160 - ((w - min) / (max - min)) * 140;
     const path = pts.map((p, i) => `${i ? 'L' : 'M'}${x(i)},${y(p.w)}`).join(' ');
-    svg.innerHTML = `<path d="${path}" fill="none" stroke="#2fbf71" stroke-width="4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>` +
-      pts.map((p, i) => `<circle cx="${x(i)}" cy="${y(p.w)}" r="5" fill="#1e9a58"/>`).join('');
+    svg.innerHTML = `<path d="${path}" fill="none" stroke="#36e08a" stroke-width="4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>` +
+      pts.map((p, i) => `<circle cx="${x(i)}" cy="${y(p.w)}" r="5" fill="#36e08a"/>`).join('');
     const diff = (pts[pts.length - 1].w - pts[0].w).toFixed(1);
     $('chartNote').textContent = `Изменение с начала: ${diff > 0 ? '+' : ''}${diff} кг`;
   }

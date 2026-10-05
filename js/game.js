@@ -71,10 +71,10 @@
     ctx.font = '56px serif';
     ctx.fillText('🧺', basket.x, H - 40);
     if (over) {
-      ctx.fillStyle = 'rgba(31,45,42,.75)'; ctx.fillRect(40, H / 2 - 90, W - 80, 160);
-      ctx.fillStyle = '#fff'; ctx.font = '800 30px Nunito, sans-serif';
+      ctx.fillStyle = 'rgba(0,0,0,.7)'; ctx.fillRect(40, H / 2 - 90, W - 80, 160);
+      ctx.fillStyle = '#fff'; ctx.font = '800 30px Inter, sans-serif';
       ctx.fillText(score ? `Счёт: ${score} 🎉` : 'Нажми «Играть»!', W / 2, H / 2 - 20);
-      ctx.font = '20px Nunito, sans-serif';
+      ctx.font = '20px Inter, sans-serif';
       ctx.fillText(score >= 20 ? 'Фитик сыт и счастлив!' : score ? 'Фитик ещё хочет добавки!' : '', W / 2, H / 2 + 24);
     }
   }

@@ -4,6 +4,7 @@
     ['index.html', 'Главная'],
     ['diary.html', 'Мой дневник'],
     ['workouts.html', 'Тренировки'],
+    ['timer.html', 'Таймер'],
     ['nutrition.html', 'Питание'],
     ['game.html', 'Игра'],
     ['shops.html', 'Магазины'],

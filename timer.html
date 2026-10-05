@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Интервальный таймер — Фитик</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container section">
+    <div style="text-align:center">
+      <span class="tag">HIIT · Табата · круговые</span>
+      <h1>Интервальный <em>таймер</em></h1>
+      <p class="lead">Работа / отдых / раунды. Звуковые сигналы подскажут, когда начинать и когда отдыхать.</p>
+    </div>
+    <div class="chips" style="justify-content:center" id="presets"></div>
+    <div class="card timer-box" id="box">
+      <div class="timer-phase" id="phase">Готов</div>
+      <div class="timer-time" id="time">00:20</div>
+      <div class="lead" id="round">Раунд 0 / 8</div>
+      <div class="timer-controls">
+        <button class="btn" id="startBtn">▶ Старт</button>
+        <button class="btn ghost" id="resetBtn">↺ Сброс</button>
+      </div>
+      <div class="timer-inputs">
+        <div><label for="wSec">Работа, сек</label><input type="number" id="wSec" min="5" max="600" value="20"></div>
+        <div><label for="rSec">Отдых, сек</label><input type="number" id="rSec" min="0" max="600" value="10"></div>
+        <div><label for="rounds">Раундов</label><input type="number" id="rounds" min="1" max="50" value="8"></div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/timer.js"></script>
+</body>
+</html>

@@ -19,7 +19,7 @@ const Store = (() => {
     getLog: () => read(K_LOG, {}),
     getDay(date = today()) {
       const log = read(K_LOG, {});
-      return log[date] || { water: 0, eaten: [], extra: 0, weight: null };
+      return log[date] || { water: 0, eaten: [], extra: 0, weight: null, workouts: [] };
     },
     setDay(day, date = today()) {
       const log = read(K_LOG, {});

@@ -6,7 +6,7 @@
   <title>Фитик — помощник по питанию, похудению и тренировкам</title>
   <meta name="description" content="Персональный дневник здоровья: рассчитай свою норму калорий, получи рацион и следи за прогрессом вместе с роботом Фитиком.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,10 +24,18 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="tag">Питание · Похудение · Тренировки</span>
-          <h1>Твой персональный дневник здоровья</h1>
-          <p class="lead">Ответь на пару вопросов — Фитик посчитает норму калорий и БЖУ, составит рацион и перекинет тебя на твою личную страницу.</p>
-          <a href="#start" class="btn">Рассчитать мой рацион</a>
+          <span class="tag">Спорт · Питание · Похудение</span>
+          <h1>Тренируйся. Питайся. <em>Побеждай.</em></h1>
+          <p class="lead">Ответь на пару вопросов — Фитик посчитает норму калорий и БЖУ, составит рацион и недельный план тренировок и откроет твою личную страницу.</p>
+          <div class="hero-cta">
+            <a href="#start" class="btn">Рассчитать мой план</a>
+            <a href="workouts.html" class="btn ghost">Тренировки</a>
+          </div>
+          <div class="kpis">
+            <div><b>9</b><span>программ тренировок</span></div>
+            <div><b>25+</b><span>упражнений с техникой</span></div>
+            <div><b>HIIT</b><span>интервальный таймер</span></div>
+          </div>
         </div>
         <div class="hero-mascot">
           <div class="bubble" id="bubble">Привет!</div>
@@ -41,6 +49,7 @@
         <div class="card wizard">
           <div class="progress"><div id="progressBar"></div></div>
           <form id="wizard" novalidate>
+            <div class="steps">
             <div class="step active">
               <h2>Как тебя зовут?</h2>
               <label for="name">Имя</label>
@@ -87,7 +96,8 @@
               </select>
             </div>
 
-            <p id="error" class="notice" hidden></p>
+            </div>
+            <div class="error-slot"><p id="error" class="notice" hidden></p></div>
             <div class="row">
               <button type="button" class="btn ghost small" id="prevBtn">Назад</button>
               <button type="button" class="btn" id="nextBtn">Дальше</button>
@@ -99,11 +109,18 @@
 
     <section class="section">
       <div class="container">
-        <h2>Что внутри</h2>
+        <h2>Выбери своё <em>направление</em></h2>
+        <div class="grid cols-4" id="sports"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Что <em>внутри</em></h2>
         <div class="grid cols-3">
           <div class="card"><h3>🧮 Умный калькулятор</h3><p>Норма калорий, белки, жиры, углеводы и воды — под твой вес и цель.</p></div>
           <div class="card"><h3>📓 Личный дневник</h3><p>Отмечай еду, воду и вес. Фитик радуется твоим успехам.</p></div>
-          <div class="card"><h3>🎮 Мини-игра</h3><p>Лови полезную еду и заряжай своего Фитика энергией.</p></div>
+          <div class="card"><h3>⏱️ Таймер и план</h3><p>Интервальный таймер, недельный план тренировок и расчёт сожжённых калорий.</p></div>
         </div>
       </div>
     </section>
@@ -112,6 +129,7 @@
   <div id="site-footer"></div>
 
   <script src="js/data.js"></script>
+  <script src="js/sport.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/calc.js"></script>
   <script src="js/audio.js"></script>

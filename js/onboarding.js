@@ -24,6 +24,7 @@
   const next = document.getElementById('nextBtn');
   const prev = document.getElementById('prevBtn');
   const err = document.getElementById('error');
+  const wizardCard = document.querySelector('.wizard');
   const hints = [
     'Как тебя зовут? Хочу знакомиться! 😊',
     'Расскажи немного о себе',
@@ -54,6 +55,13 @@
     err.hidden = true;
   }
 
+  // На телефоне после «Дальше» страница не должна «уезжать»: закрываем клавиатуру
+  // и возвращаем карточку анкеты в одно и то же место экрана.
+  function settle() {
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    setTimeout(() => wizardCard.scrollIntoView({ block: 'start', behavior: 'smooth' }), 120);
+  }
+
   const val = (id) => document.getElementById(id).value.trim();
   const num = (id) => parseFloat(val(id).replace(',', '.'));
 
@@ -72,10 +80,10 @@
   next.addEventListener('click', () => {
     if (!validate()) return;
     Sound.blip();
-    if (i < steps.length - 1) { i++; show(); return; }
+    if (i < steps.length - 1) { i++; show(); settle(); return; }
     finish();
   });
-  prev.addEventListener('click', () => { if (i > 0) { i--; show(); } });
+  prev.addEventListener('click', () => { if (i > 0) { i--; show(); settle(); } });
   document.getElementById('wizard').addEventListener('submit', (e) => e.preventDefault());
 
   function finish() {
@@ -94,4 +102,7 @@
   }
 
   show();
+
+  const sg = document.getElementById('sports');
+  if (sg) sg.innerHTML = SPORT.sports.map((x) => `<a class="card sport-card" href="${x.href}"><span class="big">${x.emoji}</span><h3>${x.name}</h3><p>${x.text}</p></a>`).join('');
 })();
