@@ -9,7 +9,12 @@
   const hideIntro = () => { intro.classList.add('hide'); lock(false); sessionStorage.setItem('ht_intro', '1'); };
   if (sessionStorage.getItem('ht_intro')) intro.classList.add('hide'); else { lock(true); scrollTo(0, 0); }
 
-  document.getElementById('startBtn').addEventListener('click', () => { Sound.jingle(); setTimeout(hideIntro, 1500); });
+  // Музыка играет сама, а пользователя сразу перекидываем к анкете
+  document.getElementById('startBtn').addEventListener('click', () => {
+    Sound.jingle();
+    hideIntro();
+    document.querySelector('.wizard').scrollIntoView({ block: 'start' });
+  });
 
   const bubble = document.getElementById('bubble');
   const mascot = Mascot.mount(document.getElementById('mascot'), { size: 240, bubble });
