@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Игра — Фитик</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container section">
+    <h1>Накорми Фитика 🍎</h1>
+    <p class="lead">Лови полезную еду (🍎🥦🥕🍌) и избегай вредной (🍔🍩🍟). 30 секунд — двигай мышкой, пальцем или стрелками.</p>
+    <p style="text-align:center"><b>Счёт: <span id="score">0</span></b> · Время: <span id="time">30</span> · Рекорд: <span id="best">0</span></p><canvas id="game" width="480" height="640"></canvas><p style="text-align:center"><button class="btn" id="play">▶ Играть</button></p>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
