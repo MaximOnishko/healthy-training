@@ -8,7 +8,6 @@
   if (sessionStorage.getItem('ht_intro')) intro.classList.add('hide');
 
   document.getElementById('startBtn').addEventListener('click', () => { Sound.jingle(); setTimeout(hideIntro, 1500); });
-  document.getElementById('skipBtn').addEventListener('click', () => { Store.setMuted(true); hideIntro(); location.reload(); });
 
   const bubble = document.getElementById('bubble');
   const mascot = Mascot.mount(document.getElementById('mascot'), { size: 240, bubble });
