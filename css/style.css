@@ -218,3 +218,7 @@ input::placeholder { color: #5a6c80; }
   .nav a { white-space: nowrap; }
   .wizard { scroll-margin-top: 12px; }
 }
+
+/* блокировка прокрутки под стартовым экраном */
+html.no-scroll, html.no-scroll body { overflow: hidden; height: 100%; overscroll-behavior: none; }
+.intro { height: 100vh; height: 100dvh; touch-action: none; overscroll-behavior: contain; }

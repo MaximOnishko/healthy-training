@@ -4,8 +4,10 @@
   const introMascot = Mascot.mount(document.getElementById('introMascot'), { size: 200 });
   introMascot.setMood('excited');
 
-  const hideIntro = () => { intro.classList.add('hide'); sessionStorage.setItem('ht_intro', '1'); };
-  if (sessionStorage.getItem('ht_intro')) intro.classList.add('hide');
+  // Пока виден стартовый экран, страницу под ним листать нельзя
+  const lock = (on) => document.documentElement.classList.toggle('no-scroll', on);
+  const hideIntro = () => { intro.classList.add('hide'); lock(false); sessionStorage.setItem('ht_intro', '1'); };
+  if (sessionStorage.getItem('ht_intro')) intro.classList.add('hide'); else { lock(true); scrollTo(0, 0); }
 
   document.getElementById('startBtn').addEventListener('click', () => { Sound.jingle(); setTimeout(hideIntro, 1500); });
 
